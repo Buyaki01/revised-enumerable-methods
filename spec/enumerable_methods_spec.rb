@@ -139,4 +139,18 @@ RSpec.describe Enumerable do
         expect(d.my_none?{ |word| word.length >= 4 }).to eql(false)
       end
     end
+
+    describe '#my_count' do
+      it 'should return the length of the argument provided if no block is given' do
+        expect(c.my_count).to eql(4)
+      end
+
+      it 'should count the number of times that 2 appears in the array' do
+        expect(c.my_count(2)).to eql(2)
+      end
+
+      it 'should count how many even numbers appear in the array' do
+        expect(c.my_count(&:even?)).to eql(3)
+      end
+    end
 end
