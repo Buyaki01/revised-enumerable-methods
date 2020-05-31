@@ -153,4 +153,14 @@ RSpec.describe Enumerable do
         expect(c.my_count(&:even?)).to eql(3)
       end
     end
+
+    describe '#my_map' do
+      it 'should return enumerator if no block is given' do
+        expect(b.my_map).to be_a(Enumerator)
+      end
+
+      it 'should return a new array with i * i for the numbers between 1 and 4' do
+        expect((1..4).my_map{ |i| i*i }).to eq([1, 4, 9, 16])
+      end
+    end
 end
