@@ -4,19 +4,21 @@ RSpec.describe Enumerable do
     let(:b) { [1, 3, 5, 7] }
     let(:c) { [1, 2, 4, 2] }
     let(:d) { ["ant", "bear", "cat"] } 
+    let(:e) { [nil, true, 99] }
+    let(:f) { [1, 2, 3, 4, 'cool'] }
 
     describe '#my_each' do
-      it 'if no block is given, it should return enumerator' do
+      it 'should return enumerator if no block is given' do
         expect(b.my_each).to be_a(Enumerator)
       end
 
-      it 'if an array is given, it should return an array' do
+      it 'should return an array if an array is given' do
         expect(b.my_each {|i| i}).to eql(b)
       end
     end
 
     describe '#my_each_with_index' do
-      it 'if no block is given, it should return enumerator' do
+      it 'should return enumerator if no block is given' do
         expect(d.my_each).to be_a(Enumerator)
       end
 
@@ -27,7 +29,7 @@ RSpec.describe Enumerable do
     end
 
     describe '#my_select' do
-      it 'if no block is given, it should return enumerator' do
+      it 'should return enumerator if no block is given' do
         expect(b.my_select).to be_a(Enumerator)
       end
 
@@ -42,5 +44,40 @@ RSpec.describe Enumerable do
       it 'Should return words with the required length' do
         expect(d.my_select { |word| word.length == 3 }).to eq(["ant", "cat"])
       end
+    end
+
+    describe '#my_all?' do
+      it 'should return true if no argument and block is given' do
+        expect([].my_all?).to eql(true)
+      end
+
+      it 'should return false if argument is given and block is not given' do
+        expect(e.my_all?).to eql(false)
+      end
+
+      it 'should return true if all the elements in the argument are Numeric is given and block is given' do
+        expect(b.my_all?(Numeric)).to eql(true)
+      end
+
+      it 'should return false if all the elements in the argument are not Numeric and block is given' do
+        expect(f.my_all?(Numeric)).to eql(false)
+      end
+
+      it 'should return true if all the elements in the argument contain t and block is given' do
+        expect(["ant", "beat", "cat"].my_all?(/t/) ).to eql(true)
+      end
+
+      it 'should return false if all the elements in the argument do not contain t and block is given' do
+        expect(["ant", "bear", "cat"].my_all?(/t/) ).to eql(false)
+      end
+
+      it 'should return true if all the words in the argument has 3 letters and above and block is given' do
+        expect(["ant", "bear", "cat"].my_all?{ |word| word.length >= 3 } ).to eql(true)
+      end
+
+      it 'should return false if all the words in the argument has 4 letters and above and block is given' do
+        expect(["ant", "bear", "cat"].my_all?{ |word| word.length >= 4 } ).to eql(false)
+      end
+
     end
 end
