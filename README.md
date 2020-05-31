@@ -17,7 +17,10 @@ Add my_each, my_each_with_index, my_select, my_all?, my_any?, my_none?, my_count
 To get a local copy up and running follow these simple example steps.
 - Clone the project unto your local machine
 - `cd` into the project directory
-- run ruby enumerable_methods.rb in your terminal 
+- Run **ruby enumerable_methods.rb** in your terminal 
+- Run **gem install rspec** -> to install RSpec
+- Run **rspec --init** -> to initialize RSpec within the project
+- Run **rspec** -> to test the program with RSpec
 
 ## 🤝 Contributing
 
@@ -32,7 +35,7 @@ Contributions, issues and feature requests are welcome! Start by:
 
 ##### Please feel free to contribute to any of these!
 
-Feel free to check the [issues page](https://github.com/Buyaki01/enumerable_methods/issues).
+Feel free to check the [issues page](https://github.com/Buyaki01/revised-enumerable-methods/issues).
 
 ## Author
 
