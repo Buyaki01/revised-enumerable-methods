@@ -78,6 +78,31 @@ RSpec.describe Enumerable do
       it 'should return false if all the words in the argument has 4 letters and above and block is given' do
         expect(["ant", "bear", "cat"].my_all?{ |word| word.length >= 4 } ).to eql(false)
       end
+    end
 
+    describe '#my_any?' do
+      it 'should return false if no argument and block is given' do
+        expect([].my_any?).to eql(false)
+      end
+
+      it 'should return true if argument is given and block is not given' do
+        expect(e.my_any?).to eql(true)
+      end
+
+      it 'should return true if there is at least one Numeric in the elements in the argument and block is given' do
+        expect(e.my_any?(Numeric)).to eql(true)
+      end
+
+      it 'should return false if none of the elements in the argument contain d and block is given' do
+        expect(["ant", "bear", "cat"].my_any?(/d/) ).to eql(false)
+      end
+
+      it 'should return true if at least one of the words in the argument has 3 letters and above and block is given' do
+        expect(["ant", "bear", "cat"].my_any?{ |word| word.length >= 3 } ).to eql(true)
+      end
+
+      it 'should return true if at least one of the words in the argument has 4 letters and above and block is given' do
+        expect(["ant", "bear", "cat"].my_any?{ |word| word.length >= 4 } ).to eql(true)
+      end
     end
 end
