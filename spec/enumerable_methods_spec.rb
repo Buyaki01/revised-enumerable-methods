@@ -177,4 +177,10 @@ RSpec.describe Enumerable do
         expect(["cat", "sheep", "bear"].my_inject{ |memo, word| memo.length > word.length ? memo : word }).to eql("sheep")
       end
     end
+
+    describe '#multiply_els' do
+      it 'should test whether my_inject is working correctly' do
+        expect([3,10].my_inject{|sum, i| sum * i}).to eq(30)
+      end
+    end
 end
