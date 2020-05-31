@@ -1,4 +1,4 @@
-require './enumerable_methods.rb'
+require_relative '../lib/enumerable_methods.rb'
 
 RSpec.describe Enumerable do
   let(:b) { [1, 3, 5, 7] }
