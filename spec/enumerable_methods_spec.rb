@@ -174,7 +174,7 @@ RSpec.describe Enumerable do
     end
 
     it 'should find the longest word in the given array' do
-      expect(%w[cat sheep bear].my_inject { |memo, word| memo.length > word.length ? memo : word }).to eql('sheep')
+      expect(%w[cat sheep bear goat].my_inject { |memo, word| memo.length > word.length ? memo : word }).to eql('sheep')
     end
   end
 
