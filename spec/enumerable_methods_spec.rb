@@ -163,4 +163,18 @@ RSpec.describe Enumerable do
         expect((1..4).my_map{ |i| i*i }).to eq([1, 4, 9, 16])
       end
     end
+
+    describe '#my_inject' do
+      it 'should find the sum of numbers between 5 and 10' do
+        expect((5..10).my_inject{ |sum, n| sum + n }).to eql(45)
+      end
+
+      it 'should find the product of numbers between 5 and 10' do
+        expect((5..10).my_inject(1){ |product, n| product * n }).to eql(151200)
+      end
+
+      it 'should find the longest word in the given array' do
+        expect(["cat", "sheep", "bear"].my_inject{ |memo, word| memo.length > word.length ? memo : word }).to eql("sheep")
+      end
+    end
 end
