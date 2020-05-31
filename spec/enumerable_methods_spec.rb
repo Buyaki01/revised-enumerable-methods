@@ -105,4 +105,38 @@ RSpec.describe Enumerable do
         expect(["ant", "bear", "cat"].my_any?{ |word| word.length >= 4 } ).to eql(true)
       end
     end
+
+    describe '#my_none?' do
+      it 'should return true if no argument and block is given' do
+        expect([].my_none?).to eql(true)
+      end
+
+      it 'should return true if it has nil as the argument and no block is given' do
+        expect([nil].my_none?).to eql(true)
+      end
+
+      it 'should return true if it has nil and false as the argument and no block is given' do
+        expect([nil, false].my_none?).to eql(true)
+      end
+
+      it 'should return false if any of the argument returns true and no block is given' do
+        expect([nil, true, false].my_none?).to eql(false)
+      end
+
+      it 'should return false if any of the argument has a float value and a block is given' do
+        expect([1, 3.14, 42].my_none?(Float)).to eql(false)
+      end
+
+      it 'should return true if none of the argument contains d and a block is given' do
+        expect(d.my_none?(/d/)).to eql(true)
+      end
+
+      it 'should return true if none of the argument contains 5 letters and a above and a block is given' do
+        expect(d.my_none?{ |word| word.length == 5 }).to eql(true)
+      end
+
+      it 'should return false if any of the argument contains 4 letters and a above and a block is given' do
+        expect(d.my_none?{ |word| word.length >= 4 }).to eql(false)
+      end
+    end
 end
