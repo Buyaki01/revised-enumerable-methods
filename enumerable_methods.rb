@@ -10,16 +10,17 @@ module Enumerable
 
     case self
     when Array
-      length.times do |i|
+      (self.length).times do |i|
         yield(self[i])
       end
     when Hash
-      length.times do |i|
+      (self.length).times do |i|
         yield(keys[i], self[keys[i]])
       end
     else
       self
     end
+    self
   end
 
   def my_each_with_index
