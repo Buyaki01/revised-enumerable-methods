@@ -10,11 +10,11 @@ module Enumerable
 
     case self
     when Array
-      (self.length).times do |i|
+      length.times do |i|
         yield(self[i])
       end
     when Hash
-      (self.length).times do |i|
+      length.times do |i|
         yield(keys[i], self[keys[i]])
       end
     else
