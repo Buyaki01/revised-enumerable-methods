@@ -20,6 +20,7 @@ module Enumerable
     else
       self
     end
+    self
   end
 
   def my_each_with_index
